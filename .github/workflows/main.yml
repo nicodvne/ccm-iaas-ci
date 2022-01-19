@@ -10,28 +10,22 @@ on:
 jobs:
    build:
     runs-on: ubuntu-latest
-    env:
-      plateform: CGP
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Echo plateform content
-        run: |
-          echo "plateforme = ${{ env.plateform }}"
-
       - name: Make envfile
         uses: SpicyPizza/create-envfile@v1
         with:
-          MONGODB: 'mongodb le sang'
+          envkey_MONGODB: 'mongodb le sang'
 
-      #- name: Deploy an App Engine app
-      #  id: deploy-app
-      #  uses: google-github-actions/deploy-appengine@v0.2.0
-      #  with:
-      #    project_id: ${{ secrets.PROJECT_ID }}
-      #    deliverables: app.yaml
-      #    credentials: ${{ secrets.GCP_CREDENTIALS }}
+      - name: Deploy an App Engine app
+        id: deploy-app
+        uses: google-github-actions/deploy-appengine@v0.2.0
+        with:
+          project_id: ${{ secrets.PROJECT_ID }}
+          deliverables: app.yaml
+          credentials: ${{ secrets.GCP_CREDENTIALS }}
 
       - name: Review dotenv
         run: | 
