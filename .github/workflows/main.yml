@@ -18,7 +18,8 @@ jobs:
       - name:
         run: |
           touch .env
-          echo MONGODB=${{ secrets.MONGODB }} >> .env
+          echo ${{secrets.MONGODB}}
+          echo MONGODB =${{ secrets.MONGODB }} >> .env
           cat .env
 
       - name: Deploy an App Engine app
