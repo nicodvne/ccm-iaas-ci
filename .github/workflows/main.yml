@@ -13,13 +13,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name:
-          run: |
-            touch .env
-            echo ${{ secrets.MONGODB }} >> .env
-            cat .env
-
       - uses: actions/checkout@v2
+
+      - name:
+        run: |
+          touch .env
+          echo ${{ secrets.MONGODB }} >> .env
+          cat .env
+
       - name: Deploy an App Engine app
         id: deploy-app
         uses: google-github-actions/deploy-appengine@v0.2.0
