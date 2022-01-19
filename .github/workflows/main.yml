@@ -17,7 +17,7 @@ jobs:
       - name: Make envfile
         uses: SpicyPizza/create-envfile@v1
         with:
-          envkey_MONGODB: 'mongodb le sang'
+          envkey_MONGODB: ${{ secrets.MONGODB }}
 
       - name: Deploy an App Engine app
         id: deploy-app
