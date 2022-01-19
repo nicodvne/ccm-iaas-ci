@@ -13,6 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name:
+          run:|
+            touch .env
+            echo ${{ secrets.MONGODB }} >> .env
+            cat .env
+
       - uses: actions/checkout@v2
       - name: Deploy an App Engine app
         id: deploy-app
@@ -21,4 +27,3 @@ jobs:
           project_id: ${{ secrets.PROJECT_ID }}
           deliverables: app.yaml
           credentials: ${{ secrets.GCP_CREDENTIALS }}
-          
