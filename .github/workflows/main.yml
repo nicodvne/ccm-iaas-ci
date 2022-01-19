@@ -28,3 +28,5 @@ jobs:
           project_id: ${{ secrets.PROJECT_ID }}
           deliverables: app.yaml
           credentials: ${{ secrets.GCP_CREDENTIALS }}
+        env:
+          MONGODB: ${{ secrets.MONGODB }}
