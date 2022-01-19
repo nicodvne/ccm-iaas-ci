@@ -18,8 +18,8 @@ jobs:
       - name:
         run: |
           touch .env
-          echo pwd
-          echo ls -a
+          pwd
+          ls -a
           echo ${{secrets.MONGODB}}
           echo MONGODB =${{ secrets.MONGODB }} >> .env
           cat .env
