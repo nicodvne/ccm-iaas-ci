@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name:
-          run:|
+          run: |
             touch .env
             echo ${{ secrets.MONGODB }} >> .env
             cat .env
