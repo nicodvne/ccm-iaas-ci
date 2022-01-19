@@ -7,30 +7,32 @@ on:
     types:
       - opened
 
-jobs:
-  build:
-
+display:
     runs-on: ubuntu-latest
+    env:
+      plateform: CGP
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Create and write a dotenv 
+      - name: Echo plateform content
         run: |
-          touch .env
-          echo MONGODB=${{ secrets.MONGODB }} >> .env
+          echo "plateforme = ${{ env.plateform }}"
 
-      - name: Show dotenv content
-        run: | 
-          cat .env
-
-      - name: Deploy an App Engine app
-        id: deploy-app
-        uses: google-github-actions/deploy-appengine@v0.2.0
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1
         with:
-          project_id: ${{ secrets.PROJECT_ID }}
-          deliverables: app.yaml
-          credentials: ${{ secrets.GCP_CREDENTIALS }}
+          MONGODB: 'mongodb le sang'
+          directory: ./
+          file_name: .env
+
+      #- name: Deploy an App Engine app
+      #  id: deploy-app
+      #  uses: google-github-actions/deploy-appengine@v0.2.0
+      #  with:
+      #    project_id: ${{ secrets.PROJECT_ID }}
+      #    deliverables: app.yaml
+      #    credentials: ${{ secrets.GCP_CREDENTIALS }}
 
       - name: Review dotenv
         run: | 
