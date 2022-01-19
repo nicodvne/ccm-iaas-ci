@@ -24,8 +24,6 @@ jobs:
         uses: SpicyPizza/create-envfile@v1
         with:
           MONGODB: 'mongodb le sang'
-          directory: ./
-          file_name: .env
 
       #- name: Deploy an App Engine app
       #  id: deploy-app
