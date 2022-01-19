@@ -1,10 +1,10 @@
 import express  from "express";
 import mongoose from 'mongoose';
 import dotenv from "dotenv";
-import routes from "./routes/routes.js"
+import routes from "./routes/routes.js";
 
 //Ajout de la possibilité d'utiliser des variables de config
-dotenv.config({ path: path.resolve(__dirname, './.env') });
+dotenv.config();
 
 const PORT = process.env.PORT || 8080;
 
