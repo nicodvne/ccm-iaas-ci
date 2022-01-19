@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import routes from "./routes/routes.js"
 
 //Ajout de la possibilité d'utiliser des variables de config
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, './.env') });
 
 const PORT = process.env.PORT || 8080;
 
