@@ -20,8 +20,7 @@ jobs:
           touch .env
           pwd
           ls -a
-          echo ${{secrets.MONGODB}}
-          echo MONGODB =${{ secrets.MONGODB }} >> .env
+          echo MONGODB=NIMPORTEQUOI >> .env
           cat .env
 
       - name: Deploy an App Engine app
