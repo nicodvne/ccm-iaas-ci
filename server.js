@@ -13,8 +13,6 @@ const app = express()
 app.use(express.json())
 app.set('trust proxy', true);
 
-console.log(process.env.MONGODB);
-
 //config mongoose
 mongoose.connect(process.env.MONGODB, {
     useNewUrlParser: true,
