@@ -7,8 +7,6 @@ on:
     types:
       - opened
 
-env:
-  MONGODB: ${{ secrets.MONGODB }}
 jobs:
   build:
 
@@ -17,11 +15,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name:
+      - name: Create and write a dotenv 
         run: |
           touch .env
-          echo MONGODB=${{secrets.MONGODB}} >> .env
-          cat .env
+          echo MONGODB=${{ secrets.MONGODB }} >> .env
+
+      - name: Show dotenv content
+        run: cat .env
 
       - name: Deploy an App Engine app
         id: deploy-app
@@ -30,3 +30,6 @@ jobs:
           project_id: ${{ secrets.PROJECT_ID }}
           deliverables: app.yaml
           credentials: ${{ secrets.GCP_CREDENTIALS }}
+
+      - name: Review dotenv
+        run: cat .env
