@@ -21,7 +21,8 @@ jobs:
           echo MONGODB=${{ secrets.MONGODB }} >> .env
 
       - name: Show dotenv content
-        run: cat .env
+        run: | 
+          cat .env
 
       - name: Deploy an App Engine app
         id: deploy-app
@@ -32,4 +33,5 @@ jobs:
           credentials: ${{ secrets.GCP_CREDENTIALS }}
 
       - name: Review dotenv
-        run: cat .env
+        run: | 
+          cat .env
